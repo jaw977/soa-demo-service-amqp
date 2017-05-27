@@ -21,7 +21,7 @@ class Service {
 	}
 	
 	async connect() {
-		if (! this.connection) this.connection = await amqplib.connect('amqp://localhost');
+		if (! this.connection) this.connection = await amqplib.connect(process.env.RABBITMQ_URL || 'amqp://localhost');
 		return this.connection;
 	}
 	
