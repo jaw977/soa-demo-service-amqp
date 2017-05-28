@@ -17,7 +17,7 @@ class Service {
 	
 	handle(msg) {
 		const handler = _.find(this.handlers, ({pattern}) => _.isMatch(msg, pattern));
-		return handler ? handler.fn(msg) : Promise.reject( new Error("No handler found that matches message"));
+		return handler ? handler.fn(msg) : Promise.resolve({error:"Unknown message"});
 	}
 	
 	async connect() {
