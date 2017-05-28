@@ -50,7 +50,7 @@ class Service {
 		const resQueue = await channel.assertQueue('', {exclusive: true});
 		const promise = new Promise(function (resolve, reject) {
 			channel.consume(resQueue.queue, function(amqpMsg) {
-				resolve(amqpMsg.content.toString());
+				resolve(JSON.parse(amqpMsg.content.toString()));
 				channel.close();
 			});
 		});
